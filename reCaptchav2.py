@@ -36,7 +36,7 @@ def audio():
     except: pass
 
 browser=webdriver.Chrome('C:\\Users\\Admin\\PycharmProjects\\pych\\venv\\Lib\\site-packages\\selenium\\webdriver\\chrome\\chromedriver.exe')
-browser.header_overrides={
+browser.header_overrides={  #general header parameters that bypass reCAPTCHAv2
 'authority': 'www.google.com',
 'method': 'GET',
 'path': '/recaptcha/api2/demo',
@@ -59,7 +59,7 @@ search=WebDriverWait(browser,10).until(EC.presence_of_element_located((By.NAME,'
 search.send_keys('recaptcha demo')
 search.send_keys(Keys.ENTER)
 for x in browser.find_elements_by_tag_name('a'):
-    if x.get_attribute('href')=='https://www.google.com/recaptcha/api2/demo':
+    if x.get_attribute('href')=='https://www.google.com/recaptcha/api2/demo': #change the URL to the targeted site
         x.click()        #redirection to reCAPTCHA website
         break
 
